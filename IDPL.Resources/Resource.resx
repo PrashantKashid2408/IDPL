@@ -1,0 +1,552 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lbl_AcademicYearExist" xml:space="preserve">
+    <value>AcademicYearName already exists!</value>
+  </data>
+  <data name="lbl_academicYearIdRequired" xml:space="preserve">
+    <value>AcademicYear Id is required !</value>
+  </data>
+  <data name="lbl_AcademicYearNotInserted" xml:space="preserve">
+    <value>Academic Year Not Inserted !</value>
+  </data>
+  <data name="lbl_accountDeleted" xml:space="preserve">
+    <value>Account Deleted</value>
+  </data>
+  <data name="lbl_accountDisabled" xml:space="preserve">
+    <value>Account Disabled</value>
+  </data>
+  <data name="lbl_AttendanceMarkedBeforeStudentAdded" xml:space="preserve">
+    <value>Student added after marking an attendance !</value>
+  </data>
+  <data name="lbl_Attendance_Taken" xml:space="preserve">
+    <value>Attendance is already taken !</value>
+  </data>
+  <data name="lbl_Cap_information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="lbl_Cap_success" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="lbl_classCreateInvalid" xml:space="preserve">
+    <value>Term and grade's start and end date is not provided by school !</value>
+  </data>
+  <data name="lbl_ClassNameAlreadyExists" xml:space="preserve">
+    <value>Class Name Already Exists !</value>
+  </data>
+  <data name="lbl_ClassNameExist" xml:space="preserve">
+    <value>Class name is already exist !</value>
+  </data>
+  <data name="lbl_confirmpassword" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="lbl_CurriculumDisabled" xml:space="preserve">
+    <value>Curriculum disabled !</value>
+  </data>
+  <data name="lbl_CurriculumEnabled" xml:space="preserve">
+    <value>Curriculum enabled !</value>
+  </data>
+  <data name="lbl_DataFetched" xml:space="preserve">
+    <value>Records fetched.</value>
+  </data>
+  <data name="lbl_DataNotFetched" xml:space="preserve">
+    <value>No Records Fetched !</value>
+  </data>
+  <data name="lbl_default_attendanceError" xml:space="preserve">
+    <value>Default attendance not marked yet !</value>
+  </data>
+  <data name="lbl_default_attendance_already_marked" xml:space="preserve">
+    <value>Default attendance already marked !</value>
+  </data>
+  <data name="lbl_deviceId" xml:space="preserve">
+    <value>Device id is Different</value>
+  </data>
+  <data name="lbl_domainNameExist" xml:space="preserve">
+    <value>Domain name already exist !</value>
+  </data>
+  <data name="lbl_domainNameNotFound" xml:space="preserve">
+    <value>Domain name not found !</value>
+  </data>
+  <data name="lbl_emailAddress" xml:space="preserve">
+    <value>Email Address</value>
+  </data>
+  <data name="lbl_emilIdInUse" xml:space="preserve">
+    <value>Email Id is already in use.</value>
+  </data>
+  <data name="lbl_emptyDeviceID" xml:space="preserve">
+    <value>Device Id is empty!</value>
+  </data>
+  <data name="lbl_EnquiryID_not_unique" xml:space="preserve">
+    <value>Enquiry ID is already registered !</value>
+  </data>
+  <data name="lbl_error" xml:space="preserve">
+    <value>Error!</value>
+  </data>
+  <data name="lbl_ExcelSuccess" xml:space="preserve">
+    <value>Your bulk request file is now successfully uploaded. In 20min all requests will be sent, so check in Pending Request page after 20min for status.</value>
+  </data>
+  <data name="lbl_excel_invalid_phone_number" xml:space="preserve">
+    <value>Invalid Phone Number ! (only + sign and numbers are valid)</value>
+  </data>
+  <data name="lbl_exception" xml:space="preserve">
+    <value>Exception!</value>
+  </data>
+  <data name="lbl_excle_mandatory_empty" xml:space="preserve">
+    <value>Mandatory data is empty !</value>
+  </data>
+  <data name="lbl_exportToExcel" xml:space="preserve">
+    <value>Export To Excel</value>
+  </data>
+  <data name="lbl_FatherEmail" xml:space="preserve">
+    <value>Father account cannot be created since this email id is already used for mother</value>
+  </data>
+  <data name="lbl_FatherName" xml:space="preserve">
+    <value>No Special character in Fathername</value>
+  </data>
+  <data name="lbl_files" xml:space="preserve">
+    <value>File(s)</value>
+  </data>
+  <data name="lbl_FirstName" xml:space="preserve">
+    <value>No Special character in Firstname</value>
+  </data>
+  <data name="lbl_gradeIdRequired" xml:space="preserve">
+    <value>Grade Id is required !</value>
+  </data>
+  <data name="lbl_GradeNameExist" xml:space="preserve">
+    <value>Grade name already exist !</value>
+  </data>
+  <data name="lbl_GradeNameNotFound" xml:space="preserve">
+    <value>Grade name not found !</value>
+  </data>
+  <data name="lbl_GradeNotInserted" xml:space="preserve">
+    <value>Grade Not Inserted !</value>
+  </data>
+  <data name="lbl_image_not_saved" xml:space="preserve">
+    <value>Image not saved !</value>
+  </data>
+  <data name="lbl_in" xml:space="preserve">
+    <value>in</value>
+  </data>
+  <data name="lbl_IncorrectDomainName" xml:space="preserve">
+    <value>Incorrect domain name !</value>
+  </data>
+  <data name="lbl_IncorrectGradeName" xml:space="preserve">
+    <value>Incorrect grade name !</value>
+  </data>
+  <data name="lbl_input" xml:space="preserve">
+    <value>Input</value>
+  </data>
+  <data name="lbl_internalServerErrorOccurred" xml:space="preserve">
+    <value>Internal Server Error Occurred!</value>
+  </data>
+  <data name="lbl_invalid" xml:space="preserve">
+    <value>Invalid</value>
+  </data>
+  <data name="lbl_invalidInputs" xml:space="preserve">
+    <value>Invalid Input Details !</value>
+  </data>
+  <data name="lbl_InvalidKioskID" xml:space="preserve">
+    <value>Kiosk Id not found!</value>
+  </data>
+  <data name="lbl_invalidToken" xml:space="preserve">
+    <value>Token Validation Failed.</value>
+  </data>
+  <data name="lbl_invalidURL" xml:space="preserve">
+    <value>Invalid URL !</value>
+  </data>
+  <data name="lbl_Invalid_ScanTime" xml:space="preserve">
+    <value>Invalid ScanTime</value>
+  </data>
+  <data name="lbl_Invoice_Sub" xml:space="preserve">
+    <value>Invoice For Student Fees</value>
+  </data>
+  <data name="lbl_LastName" xml:space="preserve">
+    <value>No Special character in Lastname</value>
+  </data>
+  <data name="lbl_LessonPlanDisabled" xml:space="preserve">
+    <value>Lesson Plan Disabled !</value>
+  </data>
+  <data name="lbl_LessonPlanEnabled" xml:space="preserve">
+    <value>Lesson Plan Enabled !</value>
+  </data>
+  <data name="lbl_LOExist" xml:space="preserve">
+    <value>Learning Objective Name Already Exist !</value>
+  </data>
+  <data name="lbl_log" xml:space="preserve">
+    <value>Log</value>
+  </data>
+  <data name="lbl_MotherEmail" xml:space="preserve">
+    <value>Mother account cannot be created since this email id is already used for father</value>
+  </data>
+  <data name="lbl_MotherName" xml:space="preserve">
+    <value>No Special character in Mothername</value>
+  </data>
+  <data name="lbl_msg_academicYearNotSavedSuccessfully" xml:space="preserve">
+    <value>Academic Year Not Saved</value>
+  </data>
+  <data name="lbl_msg_academicYearNotUpdatedSuccessfully" xml:space="preserve">
+    <value>Academic Year Not Updated</value>
+  </data>
+  <data name="lbl_msg_academicYearSavedSuccessfully" xml:space="preserve">
+    <value>Academic Year Saved Successfully</value>
+  </data>
+  <data name="lbl_msg_academicYearUpdatedSuccessfully" xml:space="preserve">
+    <value>Academic Year Updated Successfully</value>
+  </data>
+  <data name="lbl_msg_accountDoesNotExit" xml:space="preserve">
+    <value>Account Does Not Exist</value>
+  </data>
+  <data name="lbl_msg_accountNotActivated" xml:space="preserve">
+    <value>Account not activated</value>
+  </data>
+  <data name="lbl_msg_classNotSavedSuccessfully" xml:space="preserve">
+    <value>Class Not Saved</value>
+  </data>
+  <data name="lbl_msg_classNotUpdatedSuccessfully" xml:space="preserve">
+    <value>Class Not Updated</value>
+  </data>
+  <data name="lbl_msg_classSavedSuccessfully" xml:space="preserve">
+    <value>Class Saved Successfully</value>
+  </data>
+  <data name="lbl_msg_classUpdatedSuccessfully" xml:space="preserve">
+    <value>Class Updated Successfully</value>
+  </data>
+  <data name="lbl_msg_dataNotSavedSuccessfully" xml:space="preserve">
+    <value>Data Not Saved !</value>
+  </data>
+  <data name="lbl_msg_dataSavedSuccessfully" xml:space="preserve">
+    <value>Data Saved Successfully</value>
+  </data>
+  <data name="lbl_msg_emailAddressFailed" xml:space="preserve">
+    <value>Email Address Failed</value>
+  </data>
+  <data name="lbl_msg_eMailAddressRequired" xml:space="preserve">
+    <value>Email Address Required</value>
+  </data>
+  <data name="lbl_msg_emailPasswordRequired" xml:space="preserve">
+    <value>Email and Password Required</value>
+  </data>
+  <data name="lbl_msg_emailRefreshTokenRequired" xml:space="preserve">
+    <value>Email and Refresh Token Required !</value>
+  </data>
+  <data name="lbl_msg_gradeNotSavedSuccessfully" xml:space="preserve">
+    <value>Grade Not Saved</value>
+  </data>
+  <data name="lbl_msg_gradeNotUpdatedSuccessfully" xml:space="preserve">
+    <value>Grade Not Updated</value>
+  </data>
+  <data name="lbl_msg_gradeSavedSuccessfully" xml:space="preserve">
+    <value>Grade Saved Successfully</value>
+  </data>
+  <data name="lbl_msg_gradeUpdatedSuccessfully" xml:space="preserve">
+    <value>Grade Updated Successfully</value>
+  </data>
+  <data name="lbl_msg_IncompleteDetails" xml:space="preserve">
+    <value>Incomplete Details !</value>
+  </data>
+  <data name="lbl_msg_internalServerErrorOccurred" xml:space="preserve">
+    <value>Internal Server Error Occurred</value>
+  </data>
+  <data name="lbl_msg_invalidEmailAddress" xml:space="preserve">
+    <value>Invalid Email Address</value>
+  </data>
+  <data name="lbl_msg_invalidEmailAddressPassword" xml:space="preserve">
+    <value>Invalid Email Address and Password</value>
+  </data>
+  <data name="lbl_msg_invalidEmpIdAddressPassword" xml:space="preserve">
+    <value>Invalid Email ID OR Password</value>
+  </data>
+  <data name="lbl_msg_invalidPassowrd" xml:space="preserve">
+    <value>Invalid Passowrd</value>
+  </data>
+  <data name="lbl_msg_loginFailed" xml:space="preserve">
+    <value>lbl_msg_loginFailed</value>
+  </data>
+  <data name="lbl_msg_passwordChangeEmail" xml:space="preserve">
+    <value>Password change email sent</value>
+  </data>
+  <data name="lbl_msg_PleaseContactYourSchoolAdminToSetTermDates" xml:space="preserve">
+    <value>Please set Grades and Terms for the creation of Class !</value>
+  </data>
+  <data name="lbl_msg_schoolHQNotSavedSuccessfully" xml:space="preserve">
+    <value>SchoolHQ Not Saved</value>
+  </data>
+  <data name="lbl_msg_schoolHQNotUpdatedSuccessfully" xml:space="preserve">
+    <value>SchoolHQ Not Updated</value>
+  </data>
+  <data name="lbl_msg_schoolHQSavedSuccessfully" xml:space="preserve">
+    <value>SchoolHQ Saved Successfully</value>
+  </data>
+  <data name="lbl_msg_schoolHQUpdatedSuccessfully" xml:space="preserve">
+    <value>SchoolHQ Updated Successfully</value>
+  </data>
+  <data name="lbl_msg_SchoolLoginNotGenerated" xml:space="preserve">
+    <value>School login not generated.</value>
+  </data>
+  <data name="lbl_msg_schoolNotSavedSuccessfully" xml:space="preserve">
+    <value>School Not Saved</value>
+  </data>
+  <data name="lbl_msg_schoolNotUpdatedSuccessfully" xml:space="preserve">
+    <value>School Not Updated</value>
+  </data>
+  <data name="lbl_msg_schoolSavedSuccessfully" xml:space="preserve">
+    <value>School Saved Successfully</value>
+  </data>
+  <data name="lbl_msg_schoolUpdatedSuccessfully" xml:space="preserve">
+    <value>School Updated Successfully</value>
+  </data>
+  <data name="lbl_msg_studentNotSavedSuccessfully" xml:space="preserve">
+    <value>Student Not Saved</value>
+  </data>
+  <data name="lbl_msg_studentNotUpdatedSuccessfully" xml:space="preserve">
+    <value>Student Not Updated</value>
+  </data>
+  <data name="lbl_msg_studentSavedSuccessfully" xml:space="preserve">
+    <value>Student Saved Successfully</value>
+  </data>
+  <data name="lbl_msg_studentUpdatedSuccessfully" xml:space="preserve">
+    <value>Student Updated Successfully</value>
+  </data>
+  <data name="lbl_msg_teacherNotSavedSuccessfully" xml:space="preserve">
+    <value>Teacher Not Saved</value>
+  </data>
+  <data name="lbl_msg_teacherNotUpdatedSuccessfully" xml:space="preserve">
+    <value>Teacher Not Updated</value>
+  </data>
+  <data name="lbl_msg_teacherSavedSuccessfully" xml:space="preserve">
+    <value>Teacher Saved Successfully</value>
+  </data>
+  <data name="lbl_msg_teacherUpdatedSuccessfully" xml:space="preserve">
+    <value>Teacher Updated Successfully</value>
+  </data>
+  <data name="lbl_new" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="lbl_noFilesAttached" xml:space="preserve">
+    <value>No Files Attached</value>
+  </data>
+  <data name="lbl_noRecordsFound" xml:space="preserve">
+    <value>No Records Found</value>
+  </data>
+  <data name="lbl_Not_Found" xml:space="preserve">
+    <value>not found.</value>
+  </data>
+  <data name="lbl_of" xml:space="preserve">
+    <value>Of</value>
+  </data>
+  <data name="lbl_page" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="lbl_password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="lbl_phoneNumberIsAlreadyExist" xml:space="preserve">
+    <value>Phone Number Is Already Exist !</value>
+  </data>
+  <data name="lbl_PostDisabled" xml:space="preserve">
+    <value>Post Disabled !</value>
+  </data>
+  <data name="lbl_PostEnabled" xml:space="preserve">
+    <value>Post enabled !</value>
+  </data>
+  <data name="lbl_profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="lbl_promote_fail" xml:space="preserve">
+    <value>Student Not Promoted !</value>
+  </data>
+  <data name="lbl_promote_success" xml:space="preserve">
+    <value>Student Promoted SuccessFully !</value>
+  </data>
+  <data name="lbl_records" xml:space="preserve">
+    <value>Records</value>
+  </data>
+  <data name="lbl_recordsPerPage" xml:space="preserve">
+    <value>Records Per Page</value>
+  </data>
+  <data name="lbl_saveSuccessfully" xml:space="preserve">
+    <value>Saved successfully!</value>
+  </data>
+  <data name="lbl_SchoolAlreadyExist" xml:space="preserve">
+    <value>School Already Exist !</value>
+  </data>
+  <data name="lbl_SchoolcannotLogin" xml:space="preserve">
+    <value>This is a school account. Only teacher accounts can login to the app.</value>
+  </data>
+  <data name="lbl_SchoolHQ_Inserted" xml:space="preserve">
+    <value>School HQ created successfully.</value>
+  </data>
+  <data name="lbl_SchoolHQ_Updated" xml:space="preserve">
+    <value>School HQ updated successfully.</value>
+  </data>
+  <data name="lbl_SchoolSignup" xml:space="preserve">
+    <value>SchoolSignup</value>
+  </data>
+  <data name="lbl_School_Inserted" xml:space="preserve">
+    <value>School created successfully.</value>
+  </data>
+  <data name="lbl_School_Updated" xml:space="preserve">
+    <value>School HQ updated successfully.</value>
+  </data>
+  <data name="lbl_search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="lbl_sentenceDisabled" xml:space="preserve">
+    <value>Sentence Disabled !</value>
+  </data>
+  <data name="lbl_sentenceEnabled" xml:space="preserve">
+    <value>Sentence Enabled !</value>
+  </data>
+  <data name="lbl_StudentAlreadyExist" xml:space="preserve">
+    <value>Student Already Exist !</value>
+  </data>
+  <data name="lbl_StudentAlreadyExistWithThisExternalID" xml:space="preserve">
+    <value>Student Already Exist with this External ID</value>
+  </data>
+  <data name="lbl_SubDomainExist" xml:space="preserve">
+    <value>SubDomain Name Already Exist !</value>
+  </data>
+  <data name="lbl_success" xml:space="preserve">
+    <value>Success!</value>
+  </data>
+  <data name="lbl_successfullyCreated" xml:space="preserve">
+    <value>Successfully Created</value>
+  </data>
+  <data name="lbl_TeacherSignup" xml:space="preserve">
+    <value>TeacherSignup</value>
+  </data>
+  <data name="lbl_unauthorised" xml:space="preserve">
+    <value>Access unathorised !</value>
+  </data>
+  <data name="lbl_UserExist" xml:space="preserve">
+    <value>Username already Exist !</value>
+  </data>
+  <data name="lbl_UserIdOrSchoolIdRequired" xml:space="preserve">
+    <value>User Id Or School Id Required !</value>
+  </data>
+  <data name="lbl_UserIdRequired" xml:space="preserve">
+    <value>User Id Required !</value>
+  </data>
+  <data name="lbl_UserNotFound" xml:space="preserve">
+    <value>User Not Found !</value>
+  </data>
+  <data name="lbl_versionError" xml:space="preserve">
+    <value>Version mismatched !</value>
+  </data>
+</root>

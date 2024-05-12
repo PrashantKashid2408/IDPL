@@ -7,9 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IDPL.Entity\IDPL.Entity.csproj" />
-    <ProjectReference Include="..\IDPL.Resource\IDPL.Resources.csproj" />
-    <ProjectReference Include="..\IDPL.Utility\IDPL.Utility.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.SourceSafe.Interop" Version="5.2.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+    <PackageReference Include="System.Data.OleDb" Version="6.0.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\IDPL.Entity\IDPL.Entity.csproj" />
+    <ProjectReference Include="..\IDPL.Resources\IDPL.Resources.csproj" />
+    <ProjectReference Include="..\IDPL.Utility\IDPL.Utility.csproj" />
+  </ItemGroup>
+	<ItemGroup>
+		<Reference Include="CommonUtilities">
+			<HintPath>..\REF\CommonUtilities.dll</HintPath>
+		</Reference>
+	</ItemGroup>
 </Project>
