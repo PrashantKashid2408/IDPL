@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NModbus" Version="3.0.81" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IDPL.Business\IDPL.Business.csproj" />
+    <ProjectReference Include="..\IDPL.Entity\IDPL.Entity.csproj" />
+    <ProjectReference Include="..\IDPL.Resource\IDPL.Resources.csproj" />
+    <ProjectReference Include="..\IDPL.Utility\IDPL.Utility.csproj" />
+  </ItemGroup>
+
+</Project>

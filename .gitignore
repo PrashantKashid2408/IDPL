@@ -3,3 +3,12 @@
 ################################################################################
 
 /IDPL/.vs
+/IDPL/obj
+/IDPL.Business/.vs
+/IDPL.Business/obj
+/IDPL.Entity/.vs
+/IDPL.Entity/obj
+/IDPL.Resource/.vs
+/IDPL.Resource/obj
+/IDPL.Utility/.vs
+/IDPL.Utility/obj
