@@ -12,3 +12,9 @@
 /IDPL.Resource/obj
 /IDPL.Utility/.vs
 /IDPL.Utility/obj
+/IDPL/bin/Debug/net6.0
+/IDPL.Business/bin/Debug/net6.0
+/IDPL.Entity/bin/Debug/net6.0
+/IDPL.Resources/bin/Debug
+/IDPL.Resources/obj/Debug
+/IDPL.Utility/bin/Debug/net6.0
