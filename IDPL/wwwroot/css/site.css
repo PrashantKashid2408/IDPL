@@ -16,3 +16,19 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.blinking {
+    animation: blinkingAnimation 0.2s infinite alternate; /* Blinking animation */
+}
+
+@keyframes blinkingAnimation {
+    from {
+        background-color: yellow; /* Initial color */
+    }
+
+    to {
+        background-color: red; /* Blinking color */
+    }
+}
+
+

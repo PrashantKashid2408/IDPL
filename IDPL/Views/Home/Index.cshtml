@@ -1,8 +1,65 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@section Scripts
+    {
+
+
+    <script src="~/js/demo.js"></script>
+
+    <script>
+
+    </script>
+    }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="content-wrapper box" id="divLoader">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <input type="hidden" id="page" name="page" value="0" />
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark" style="text-align:left;important;">IDPL</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+                <div class="">
+                    <div class="">
+
+                        <div class="row" style="text-align:left;important;">
+                            @*  <div style="text-align:left;important;margin-top:5px;">
+                            <input type="button" style="background-color:yellow;" id="alarmButton" class="btn-sm-primary" value="Alarm" onclick="stopAlarm()" />
+
+
+
+                            </div> *@
+                            <div class="col-sm-3">
+                                <button type="button" class="btn btn-warning" id="alarmButton" onclick="stopAlarm()">Alarm</button>
+                            </div>
+@* 
+                            <div style="text-align:left;important;margin-top:5px;">
+                                <input type="button" style="background-color:#20c997;" class="btn-sm-primary" value="Led1" />
+
+
+
+                            </div> *@
+                            <div class="col-sm-3">
+                                <button type="button" class="btn btn-success">Led1</button>
+                            </div>
+
+                           @*  <div style="text-align:left;important;margin-top:5px;">
+
+                                <input type="text" value="" id="txtAlarm" placeholder="value 1" onchange="ringAlarm()" />
+                            </div> *@
+                            <div class="col-sm-6">
+                                <input type="text" style="" class="form-control" id="txtAlarm" placeholder="value 1" onchange="ringAlarm()">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </div>
+    </div>
 </div>
