@@ -42,10 +42,11 @@ namespace IDPL.Controllers
                             users = (Users)_jsonMessage.Data;
 
                             //InsertAccessMember (objUserEntity.ID, "Login", getAccessMember());
-       
+
                             if (users.RoleID == 1)
                             {
-                                _jsonMessage.ReturnUrl = ShikshaConstants.ShikshaDomain + ShikshaConstants.DefaultController + "/" + ShikshaConstants.DefaultView + "";
+                                // _jsonMessage.ReturnUrl = ShikshaConstants.ShikshaDomain + ShikshaConstants.DefaultController + "/" + ShikshaConstants.DefaultView + "";
+                                _jsonMessage.ReturnUrl = "https://localhost:7033/Home/Index";
                             }
                             else
                             {
@@ -70,80 +71,45 @@ namespace IDPL.Controllers
             Users objUserEntity = new Users();
             try
             {
-                if (string.IsNullOrWhiteSpace(username))
-                    _jsonMessage = new JsonMessage(false, Resource.lbl_msg_invalidEmailAddress, Resource.lbl_msg_invalidEmailAddress, KeyEnums.JsonMessageType.DANGER);
-                else if (string.IsNullOrWhiteSpace(password))
-                    _jsonMessage = new JsonMessage(false, Resource.lbl_msg_invalidPassowrd, Resource.lbl_msg_invalidPassowrd, KeyEnums.JsonMessageType.DANGER);
-                else
+
+                UsersBusinessFacade objUsersBusinessFacade = new UsersBusinessFacade();
+                objUserEntity = objUsersBusinessFacade.Authenticate(username, password, LoginMode);
+
+
+
+                if (objUserEntity != null)
                 {
-                    string[] Fieldsname = new string[2];
-                    string[] Values = new string[2];
-                    Fieldsname[0] = username;
-                    Fieldsname[1] = password;
-                    Values[0] = username;
-                    Values[1] = password;
 
-                    UsersBusinessFacade objUsersBusinessFacade = new UsersBusinessFacade();
-                    objUserEntity = objUsersBusinessFacade.Authenticate(username, password, LoginMode);
-
-                    if (LoginMode == "APP")
+                    if (objUserEntity.StatusId == (byte)StateEnums.Statuses.Active)
                     {
-                        if (objUserEntity != null)
-                        {
-                            if (objUserEntity.RoleID == 1 || objUserEntity.RoleID == 2 || objUserEntity.RoleID == 3)
-                            {
-                                if (objUserEntity.RoleID == 3)
-                                {
-                                    string error_msg = "This is a school account, only teacher or parent accounts can access the app.";
-                                    _jsonMessage = new JsonMessage(false, Resource.lbl_error, error_msg, KeyEnums.JsonMessageType.FAILURE, "/User/Login");
-                                    return _jsonMessage;
-                                }
-                                else
-                                {
-                                    objUserEntity = null;
-                                }
-                            }
-                        }
+                        _jsonMessage = new JsonMessage(true, Resource.lbl_Cap_success, Resource.lbl_msg_dataSavedSuccessfully, KeyEnums.JsonMessageType.SUCCESS, "strUrl", "true", objUserEntity);
                     }
-
-                    if (objUserEntity != null)
+                    else if (objUserEntity.StatusId == (byte)StateEnums.Statuses.Pending)
                     {
-                        if (objUserEntity.LoginCode == password)
-                        {
-                            _jsonMessage = new JsonMessage(true, Resource.lbl_Cap_success, Resource.lbl_msg_dataSavedSuccessfully, KeyEnums.JsonMessageType.SUCCESS, "strUrl", KeyEnums.JsonMessageType.LOGIN_USING_CODE.ToString(), objUserEntity);
-                        }
-                        else
-                        {
-                            if (objUserEntity.StatusId == (byte)StateEnums.Statuses.Active)
-                            {
-                                _jsonMessage = new JsonMessage(true, Resource.lbl_Cap_success, Resource.lbl_msg_dataSavedSuccessfully, KeyEnums.JsonMessageType.SUCCESS, "strUrl", "true", objUserEntity);
-                            }
-                            else if (objUserEntity.StatusId == (byte)StateEnums.Statuses.Pending)
-                            {
-                                _jsonMessage = new JsonMessage(false, Resource.lbl_error, Resource.lbl_msg_accountNotActivated, KeyEnums.JsonMessageType.FAILURE, "/User/Login");
-                            }
-                            else if (objUserEntity.StatusId == (byte)StateEnums.Statuses.InActive)
-                            {
-                                _jsonMessage = new JsonMessage(false, Resource.lbl_error, Resource.lbl_accountDisabled, KeyEnums.JsonMessageType.FAILURE, "/User/Login");
-                            }
-                            else if (objUserEntity.StatusId == (byte)StateEnums.Statuses.Deleted)
-                            {
-                                _jsonMessage = new JsonMessage(false, Resource.lbl_error, Resource.lbl_accountDeleted, KeyEnums.JsonMessageType.FAILURE, "/User/Login");
-                            }
-                            else if (objUserEntity.StatusId == (byte)StateEnums.Statuses.Active && objUserEntity.IsEmailVerified == true)
-                            {
-                                _jsonMessage = new JsonMessage(true, Resource.lbl_Cap_success, Resource.lbl_msg_dataSavedSuccessfully, KeyEnums.JsonMessageType.SUCCESS, "StrUrl", "true", objUserEntity);
-                            }
-                            else
-                            {
-                                _jsonMessage = new JsonMessage(false, Resource.lbl_error, Resource.lbl_msg_loginFailed, KeyEnums.JsonMessageType.ERROR);
-                            }
-                        }
+                        _jsonMessage = new JsonMessage(false, Resource.lbl_error, Resource.lbl_msg_accountNotActivated, KeyEnums.JsonMessageType.FAILURE, "/User/Login");
+                    }
+                    else if (objUserEntity.StatusId == (byte)StateEnums.Statuses.InActive)
+                    {
+                        _jsonMessage = new JsonMessage(false, Resource.lbl_error, Resource.lbl_accountDisabled, KeyEnums.JsonMessageType.FAILURE, "/User/Login");
+                    }
+                    else if (objUserEntity.StatusId == (byte)StateEnums.Statuses.Deleted)
+                    {
+                        _jsonMessage = new JsonMessage(false, Resource.lbl_error, Resource.lbl_accountDeleted, KeyEnums.JsonMessageType.FAILURE, "/User/Login");
+                    }
+                    else if (objUserEntity.StatusId == (byte)StateEnums.Statuses.Active && objUserEntity.IsEmailVerified == true)
+                    {
+                        _jsonMessage = new JsonMessage(true, Resource.lbl_Cap_success, Resource.lbl_msg_dataSavedSuccessfully, KeyEnums.JsonMessageType.SUCCESS, "StrUrl", "true", objUserEntity);
                     }
                     else
-                        _jsonMessage = new JsonMessage(false, Resource.lbl_error, Resource.lbl_msg_invalidEmpIdAddressPassword, KeyEnums.JsonMessageType.ERROR);
+                    {
+                        _jsonMessage = new JsonMessage(false, Resource.lbl_error, Resource.lbl_msg_loginFailed, KeyEnums.JsonMessageType.ERROR);
+                    }
+
                 }
+                else
+                    _jsonMessage = new JsonMessage(false, Resource.lbl_error, Resource.lbl_msg_invalidEmpIdAddressPassword, KeyEnums.JsonMessageType.ERROR);
             }
+
             catch (Exception ex)
             {
                 _jsonMessage = new JsonMessage(false, Resource.lbl_msg_internalServerErrorOccurred, Resource.lbl_msg_internalServerErrorOccurred, KeyEnums.JsonMessageType.ERROR, ex.Message);
