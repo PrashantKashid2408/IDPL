@@ -1,0 +1,134 @@
+﻿@model Core.Entity.Operator;
+@using Core.Entity.Enums;
+@using Microsoft.AspNetCore.Http;
+@using Newtonsoft.Json;
+@inject IHttpContextAccessor HttpContextAccessor;
+@{
+    var _id = (HttpContextAccessor.HttpContext.Session.GetString(KeyEnums.SessionKeys.UserId.ToString()) != null ? Convert.ToString(HttpContextAccessor.HttpContext.Session.GetString(KeyEnums.SessionKeys.UserId.ToString())) : "");
+    TempData["userid"] = _id;
+    var _role = (HttpContextAccessor.HttpContext.Session.GetString(KeyEnums.SessionKeys.UserRole.ToString()) != null ? Convert.ToString(HttpContextAccessor.HttpContext.Session.GetString(KeyEnums.SessionKeys.UserRole.ToString())) : "");
+    TempData["UserRole"] = _role;
+    
+}
+<script>
+    var IsEdit = false;
+    $(document).ready(function () {
+        if (parseInt('@Model.ID', 10) > 0) {
+            IsEdit = true;
+        }
+        if (IsEdit == true) {
+            $(".customTitleAddEdit").text('Edit Operator');
+        }
+        else {
+            $(".customTitleAddEdit").text('Add Operator');
+        }
+        
+        });
+    });
+    var custDateTime = new Date().getTime();
+    document.write("<script src=\"/js/Common.js?v=" + custDateTime + "\"><\/script>");
+
+</script>
+
+   
+
+    @*<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>*@
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                    <h1 class="m-0 text-dark customTitleAddEdit">@ViewBag.Title</h1>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+        <!-- Main content -->
+        <section class="content">
+            <div id="divLoader" class="container-fluid box">
+
+                <!-- Main row -->
+                <div class="row">
+                    <!-- Left col -->
+                <section class="col-lg-12 connectedSortable">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <form action="../AcademicYear/AddAcademicYear" id="frmOperator" method="post">
+                                    <div class="col-md-12">
+                                        <p class="text-info"><small>All the fields marked <span class="star">*</span> are compulsory</small></p>
+                                    </div>
+                                    <input type="hidden" id="ID" name="ID" value="@Model.ID" />
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                             <input type="hidden" id="hdnFinanceItemBox_0" name="hdnFinanceItemBox_0" value="@Model.ID" />
+                                            <label>Operator Name</label> <span class="starField">*</span><br />
+                                            <div class="_jsMainFinanceItemBox">
+                                                <div class="FinanceItemBox" id="divFinanceItemBox_0">
+                                                    <div class="form-group">
+                                                        <input type="text" name="AcademicYearName" id="AcademicYearName" class="form-control" value="@Model.OperatorName" placeholder="Operator Name" onblur="IsAcademicYearExist('AcademicYearName','',1)" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>                                      
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Start Date</label> <span class="starField">*</span><br />
+                                            <div class="input-group date startDateAcademicYear" data-provide="datepicker" id="divStartDateAcademicYear_0">
+                                                <input type="text" class="form-control card_inputs" id="StartDate" name="StartDate" onchange="" onblur="" placeholder="YYYY-MM-DD" value="@Model.UserName" autocomplete="off" />
+                                                <div class="input-group-addon input-group-addon-cust"> <span class="input-group-text input-group-text-cust"> <i class="far fa-calendar-alt"></i> </span> </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>End Date</label> <span class="starField">*</span><br />
+                                            <div class="input-group date endDateAcademicYear" data-provide="datepicker" id="divEndDateAcademicYear_0">
+                                                <input type="text" class="form-control card_inputs" id="EndDate" name="EndDate" onchange="" onblur="" placeholder="YYYY-MM-DD" value="@Model.Password" autocomplete="off" />
+                                                <div class="input-group-addon input-group-addon-cust"> <span class="input-group-text input-group-text-cust"> <i class="far fa-calendar-alt"></i> </span> </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    
+                                    <div class="clearfix"></div>
+                                    <div class="col-md-12">
+                                        <button class="btn btn-default" type="button" onclick="history.back()">Back</button>
+                                        <button class="btn btn-primary" type="button" id="btnClass" onclick="SubmitForm('frmAcademicYear')">Save</button>
+                                    </div>
+
+                                    <div class="clearfix"></div>
+                                </form>
+
+                                <div>&nbsp;</div>
+
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </section>
+                <!-- /.Left col -->
+                <div class="clearfix"></div>
+            </div>
+            <!-- /.row (main row) -->
+
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

@@ -1,49 +1,189 @@
-﻿<!DOCTYPE html>
+﻿@using Core.Business.BusinessFacade
+@using Core.Entity.Enums;
+@using Core.Entity.Common;
+@using IDPL.Resources;
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@using Microsoft.AspNetCore.Hosting;
+@using Microsoft.Extensions.Caching.Memory;
+@using Core.Entity;
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <title>@ViewData["Title"] - IDPL</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/IDPL.styles.css" asp-append-version="true" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">IDPL</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <!-- Navbar -->
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - IDPL - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+                <!-- Left navbar links -->
+                <ul class="navbar-nav cust-hamburgermenu">
+                    <input type="hidden" id="finance" runat="server" />
+                    <input type="hidden" id="daytracker" runat="server" />
+                    <li class="nav-item">
+                        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    </li>
+                </ul>
+          
+
+                <!-- Right navbar links -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Notifications Dropdown Menu -->
+                    @*<li class="nav-item projectTitle">TD Academy</li>*@
+                    <li class="nav-item dropdown">
+                        <a class="nav-link cust-user-nav-link" data-toggle="dropdown" href="#"> <i class="far fa-user"></i> </a>
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        @*     <span class="dropdown-item dropdown-header">Admin</span>
+                            <div class="dropdown-divider"></div> *@
+                        
+                                <a id="profile" class="dropdown-item dropdown-footer" >Profile</a>
+                            
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item dropdown-footer" asp-area="" asp-controller="Users" asp-action="Logout">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        
+        <!-- Navbar -->
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+
+            <aside class="main-sidebar sidebar-dark-primary elevation-4">
+                <!-- Brand Logo -->
+
+                <span class="brand-link"> <img src="~/images/logo.png" alt="Logo" class="brand-image" style="opacity:1"> </span>
+
+                <div class="clearfix"></div>
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <!-- Sidebar user panel (optional) -->
+                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                        <div class="image"> <img src="~/images/avatar5.png" class="img-circle elevation-2" alt="User Image"><Span style="color:#fff;margin:5px;font-weight:800;">Admin</span> </div>
+                        </div>
+
+                    <!-- Sidebar Menu -->
+                    <nav class="mt-2" style="padding-bottom: 100px;">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            @if (ViewBag.MenuId == KeyEnums.MenuKeys.liAdmin.ToString())
+                                {
+                                        <li class="nav-item has-treeview" id="liAdmin">
+                                        <a class="nav-link text-dark active" asp-area="" asp-controller="Operators" asp-action="Index">
+                                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                                            <p>Operators</p>
+                                        </a>
+                                    </li>
+                                }
+                                else
+                                {
+                            <li class="nav-item has-treeview" id="liAdmin">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Operators" asp-action="Index">
+                                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                                            <p>Operators</p>
+                                        </a>
+                                    </li>
+                                }
+                            
+                            
+                        </ul>
+                    </nav>
+                    <!-- /.sidebar-menu -->
+                </div>
+                <!-- /.sidebar -->
+                </aside>
+        <div>
+            <div class="navBalAndRef" style="display: none;">
+                <div class="navBalAndRefInner">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a class="navBalAndRefLink linkBalanceDetails" asp-area="" asp-controller="BalanceDetails" asp-action="Index">Balance Details</a>
+                                <a class="navBalAndRefLink linkCreditNote" asp-area="" asp-controller="CreditNote" asp-action="Index">Credit Note</a>
+                                <a class="navBalAndRefLink linkAdvancePayment" asp-area="" asp-controller="AdvancePayment" asp-action="Index">Advance Payment</a>
+                                <a class="navBalAndRefLink linkDeposit" asp-area="" asp-controller="Deposits" asp-action="Index">Deposits</a>
+                                <a class="navBalAndRefLink linkRefundList" asp-area="" asp-controller="RefundList" asp-action="Index">Refund List</a>
+
+                                <a class="btn btn-default pull-right" style="position: relative; top: -6px;" onclick="location.reload()">Reset Filters</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            @RenderBody()
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+
+        <footer class="border-top main-footer text-muted">
+            <div class="">
+                V0.0.1-0001  @*- Copyright &copy; IDPL 2024.*@
+            </div>
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+    @RenderSection("Scripts", required: false)
+    <script id="scriptLoader" type="application/htmlMessage">
+        <div class="overlay"></div>
+        <div class="loading-img"></div>
+    </script>
+    <script id="scriptLoaderSmall" type="application/htmlMessage">
+        <div class="overlay"></div>
+        <div class="loading-img-small"></div>
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    @*<script async src="https://www.googletagmanager.com/gtag/js?id=G-4Z5FHKWC1Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-4Z5FHKWC1Z');
+    </script>*@
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J07EDEL2BD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-J07EDEL2BD');
+    </script>
+
+    @*<script>
+    gtag('set', 'user_data', {
+    "email": {{@TempData["userName"]}}
+    });
+    </script>*@
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyAmF_1NFge8jWCAmjP7mKlAgRT4ZUIPK6s",
+            authDomain: "td-academy-dbf56.firebaseapp.com",
+            projectId: "td-academy-dbf56",
+            storageBucket: "td-academy-dbf56.appspot.com",
+            messagingSenderId: "384152939371",
+            appId: "1:384152939371:web:d99f5b4785033bf6003a2e",
+            measurementId: "G-J07EDEL2BD"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
 </body>
 </html>

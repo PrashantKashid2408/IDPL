@@ -1,0 +1,86 @@
+﻿@model X.PagedList.PagedList<Core.Entity.Operator>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using Core.Entity.Enums;
+@using Shiksha.Resources;
+@using Core.Utility;
+@using Core.Utility.Common;
+@{
+    Layout = null;
+}
+@if (Model != null && Model.Count() > 0)
+{
+    string strBorder = "";
+    if (ViewBag.IsExport != null && (bool)ViewBag.IsExport)
+    {
+        strBorder = "border='1'";
+    }
+    <table @strBorder id="example2" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example2_info">
+        <thead>
+            <tr role="row">
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="" id="col_srno" style="width: 100px;">Sr. No</th>
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="" id="col_cademicYearName">Operator Name</th>
+               
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="" id="col_EndDate">User Name</th>
+
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="" id="col_date">Password</th>
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="" id="col_StartDate">Created Date</th>
+                <th tabindex="0" aria-controls="example2" rowspan="1" colspan="1" style="width: 100px;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.RowNumber</td>
+                    <td class="wordbreak">@item.OperatorName</td>
+                    <td class="wordbreak">@item.UserName</td>
+                    <td class="wordbreak">@item.Password</td>
+
+                    @{
+                        try
+                        {
+                            var istSdate = TimeZoneInfo.ConvertTimeFromUtc(Convert.ToDateTime(item.CreatedDate), TimeZoneInfo.FindSystemTimeZoneById("India Standard Time"));
+                            <td class="wordbreak">@istSdate.ToString("dd/MM/yyyy h:mm:ss tt")</td>
+                        }
+                        catch
+                        {
+                            <td></td>
+                        }
+                        <td>
+                            @{
+                                var clsColor = "";
+                                var clslockunlock = "";
+                                var Onclick = "";
+                                var strTitle = "";
+               
+  
+
+                                if (item.StatusId == 1)
+                                {
+                                    clsColor = "btnCust_unlock";
+                                    clslockunlock = "fa fa-unlock";
+                                    Onclick = "changeStatus(this,'" + @item.ID + "','0')";
+                                    strTitle = "Enable";
+                           
+                                }
+                                else
+                                {
+                                    clsColor = "btnCust_lock";
+                                    clslockunlock = "fa fa-lock";
+                                    Onclick = "changeStatus(this,'" + @item.ID + "','1')";
+                                    strTitle = "Disable";
+                          
+                                }
+                                
+                            }
+                            <a data-toggle="tooltip" title="Edit" href="@Url.Action("AddOperator", "Operators", new { ID = item.ID })" class="btn-fa-addCustom btnCust_edit "><i class="fa fa-edit"></i></a>&nbsp;
+                            <a id="Active" data-toggle="tooltip" title="@strTitle" onclick="@Onclick" class="btn-fa-addCustom @clsColor "><i class="@clslockunlock"></i></a>
+
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}

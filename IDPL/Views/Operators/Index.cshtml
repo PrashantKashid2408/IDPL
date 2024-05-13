@@ -1,0 +1,93 @@
+﻿@using Core.Entity
+@using Core.Utility.Common
+@using X.PagedList.Mvc.Core;
+@using IDPL.Controllers
+@using IDPL.Resources;
+@using IDPL.Models;
+@using Core.Entity.Enums;
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+
+@model X.PagedList.PagedList<Core.Entity.Operator>
+
+@{
+    ViewBag.Title = "Operators";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section Scripts
+    {
+    <script type="text/javascript">
+        var changeStatusUrl = '/IDPL/ChangeStatus/';
+        var searchUrl = '/IDPL/Search';
+        var listtype = '@ViewBag.RequestList';
+    </script>
+    <script src="~/Scripts/Common/pagesort.js"></script>
+    <script>
+        var custDateTime = new Date().getTime();
+        document.write("<script src=\"/Scripts/Common/commonlist.js?v=" + custDateTime + "\"><\/script>");
+        document.write("<script src=\"/js/schoolSessionAndHolidays.js?v=" + custDateTime + "\"><\/script>");
+    </script>
+    }
+
+
+    <div class="content-wrapper box" id="divLoader">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <input type="hidden" id="page" name="page" value="0" />
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">@ViewBag.Title</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+                <div class="mtop15">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="listview-top-lp">
+                                <label class="mobhide">&nbsp;</label><br class="mobhide" />                                
+                                <input id="Search" type="text" maxlength="100" name="Search" class="form-control search-records input-search-listview" onkeydown="CallEnter(event, 'btnSearch')" placeholder="@Resource.lbl_search" />
+                                <input id="btnSearch" type="submit" value="" name="btnSearch" class="btn btn-primary btn-search-listview" onclick="go();" />
+                                <div class="clear"></div>
+                            </div>
+                            <div class="listview-top-rp">
+                                <ul class="btn-holder">
+                                    <li class="lib-lang-holLP">
+                                        <span class="lib-reco-hol" id="dvRecPerPage">
+                                            <label>@Resource.lbl_recordsPerPage:</label><br />
+                                            @{
+                                            CommonData objCD = new CommonData();
+                                            string pageSize = (HttpContextAccessor.HttpContext.Session.GetString(KeyEnums.SessionKeys.GridPageSize.ToString()) != null ? HttpContextAccessor.HttpContext.Session.GetString(KeyEnums.SessionKeys.GridPageSize.ToString()) : "10");
+                                            SelectList pageSizes = new SelectList(objCD.GetPageSizes(), "Value", "Text", pageSize);
+                                        }
+                                        @Html.DropDownList("ddlPageSize", (IEnumerable<SelectListItem>)pageSizes, new { onchange = "changePageSize()", @class = "form-control dropdownDownArrow" })
+                                    </span>
+                                    </li>
+                                    <li>
+                                    <a class="btn btn-primary" asp-area="" asp-controller="Operators" asp-action="AddOperator">Add Operator</a>
+                                    </li>
+                                </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="alert alert-info alert-dismissable">
+                                <i class="fa fa-info"></i>
+                                <span class="iconHolderSpan"> <i class="fa fa-edit"></i> Edit </span>
+                                <span class="iconHolderSpan"> <i class="fa fa-unlock"></i> Enable </span>
+                                <span class="iconHolderSpan"> <i class="fa fa-lock"></i> Disable </span>
+                            </div>
+                        </div>
+                        <div id="dvCommon">
+                            @Html.Partial("_ListPartial", Model)
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </div>
+</div>

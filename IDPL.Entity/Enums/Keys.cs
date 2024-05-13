@@ -26,7 +26,8 @@
 
         public enum MenuKeys
         {
-            
+            liAdmin,
+            liOperators
         }
 
         public enum SessionKeys
@@ -38,7 +39,8 @@
             UserRoleName,
             FirstName,
             LastName,
-            
+            UserSession,
+            GridPageSize
         }
 
         public enum ApplicationKeys
@@ -65,7 +67,5 @@
             WarningMessage,
             InfoMessage
         }
-
-        
     }
 }
