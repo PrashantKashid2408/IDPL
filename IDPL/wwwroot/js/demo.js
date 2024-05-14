@@ -3,14 +3,14 @@
 });
 
 function ringAlarm() {
-   // alert("2");
+    // alert("2");
     // Play sound
     var txt = document.getElementById('txtAlarm').value;
     if (txt == 'ajay') {
         startAlarm();
     }
-    
-    
+
+
 }
 
 var baseUrl = window.location.origin;
@@ -26,7 +26,7 @@ var alarmButton = document.getElementById('alarmButton');
 // Function to start the alarm
 function startAlarm() {
     // Get the base URL of the current page
-   
+
 
     //var audio = new Audio('~/audio/alarm.mp3'); 
 
@@ -49,3 +49,25 @@ function stopAlarm() {
     showBSAlert(__WARNING, "Alarm Stopped", __WARNING);
     alarmButton.classList.remove('blinking');
 }
+
+
+$(document).ready(function () {
+    
+});
+// Function to update live time
+function updateTime() {
+    var now = new Date();
+    var date = now.toLocaleDateString();
+    var hours = now.getHours().toString().padStart(2, '0');
+    var minutes = now.getMinutes().toString().padStart(2, '0');
+    var seconds = now.getSeconds().toString().padStart(2, '0');
+    var timeString = date + '  ' + hours + ':' + minutes + ':' + seconds;
+    $("#liveTime").text(timeString);
+}
+
+// Call updateTime() to initialize time immediately when the page loads
+updateTime();
+
+// Update time every second after the initial call
+setInterval(updateTime, 1000);
+

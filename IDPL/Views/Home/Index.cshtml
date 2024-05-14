@@ -2,16 +2,7 @@
     Layout = null;
     ViewData["Title"] = "Home Page";
 }
-@section Scripts
-    {
 
-
-    <script src="~/js/demo.js"></script>
-
-    <script>
-
-    </script>
-    }
 <link href="~/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
 <!-- Ionicons -->
 @*<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />*@
@@ -58,42 +49,47 @@
     var custDateTime = new Date().getTime();
     document.write("<script src=\"/js/global.js?v=" + custDateTime + "\"><\/script>");
     document.write("<script src=\"/js/common.js?v=" + custDateTime + "\"><\/script>");
+    document.write("<script src=\"/js/demo.js?v=" + custDateTime + "\"><\/script>");
+    
 </script>
 @*   <script src="~/js/setLayout.js"></script> *@
 
 <div class="text-center">
-    
-        <!-- Content Header (Page header) -->
-        <div class="content-header" style="padding-left:10%;">
-            <input type="hidden" id="page" name="page" value="0" />
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0 text-dark" style="text-align:left;important;">IDPL</h1>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-                <div class="clear"></div>
 
-
-
-                <div class="row" style="display:flex;">
-                    <div class="col-sm-3">
-                        <button type="button" class="btn btn-warning btn-block" id="alarmButton" onclick="stopAlarm()">Alarm</button>
-                    </div>
-                    <div class="col-sm-3">
-                        <button type="button" class="btn btn-success btn-block">Led1</button>
-                    </div>
-                    <div class="col-sm-3">
-                        <input type="text" class="form-control" id="txtAlarm" placeholder="Value 1" onchange="ringAlarm()">
-                    </div>
+    <!-- Content Header (Page header) -->
+    <div class="content-header" style="">
+        <input type="hidden" id="page" name="page" value="0" />
+        <div class="container-fluid">
+            <div class="row" style="display:flex;border: 1px solid #cccccc;border-radius: 5px; padding: 0 5px 5px;">
+                <div class="col-sm-4" style="text-align:left;important;">
+                    <span class="brand-link"> <img src="~/images/logo.png" alt="Logo" class="brand-image" style="opacity:1;height:120%;width:120%;"> </span>
+                </div><!-- /.col -->
+                <div class="col-sm-4" style="display: flex; align-items: flex-end; justify-content: flex-end;">
+                    <strong><span class="" style="font-size:16px;" id="liveTime"></span></strong>
                 </div>
- 
+            </div><!-- /.row -->
+            <div class="clear"></div>
 
 
 
-            </div><!-- /.container-fluid -->
-        </div>
-    
+            <div class="row" style="display:flex;padding-top:10px;">
+                <div class="col-sm-3">
+                    <button type="button" class="btn btn-warning btn-block" id="alarmButton" onclick="stopAlarm()">Alarm</button>
+                </div>
+                <div class="col-sm-3">
+                    <button type="button" class="btn btn-success btn-block">Led1</button>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="txtAlarm" placeholder="Value 1" onchange="ringAlarm()">
+                </div>
+            </div>
+
+
+
+
+        </div><!-- /.container-fluid -->
+    </div>
+
 </div>
 
 
