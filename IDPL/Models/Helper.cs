@@ -116,7 +116,7 @@ namespace IDPL.Models
                     CommonData _CommonData = new CommonData();
                     _session.SetString(KeyEnums.SessionKeys.UserId.ToString(), loginVM.Id.ToString());
                     _session.SetString(KeyEnums.SessionKeys.FirstName.ToString(), loginVM.FirstName.ToString());
-                    _session.SetString(KeyEnums.SessionKeys.UserRole.ToString(), loginVM.UserRole.ToString());
+                    _session.SetString(KeyEnums.SessionKeys.RoleId.ToString(), loginVM.RoleId.ToString());
                     _session.SetString(KeyEnums.SessionKeys.UserSession.ToString(), JsonConvert.SerializeObject(loginVM));
                 }
             }
@@ -131,9 +131,9 @@ namespace IDPL.Models
             bool isAllowed = false;
             try
             {
-                if (_session.GetString(KeyEnums.SessionKeys.UserRole.ToString()) == null || UserID == 0)
+                if (_session.GetString(KeyEnums.SessionKeys.RoleId.ToString()) == null || UserID == 0)
                     isAllowed = false;
-                else if (RoleIDs.ToLower().Contains(_session.GetString(KeyEnums.SessionKeys.UserRole.ToString()).ToString().ToLower()))
+                else if (RoleIDs.ToLower().Contains(_session.GetString(KeyEnums.SessionKeys.RoleId.ToString()).ToString().ToLower()))
                     isAllowed = true;
 
                 if (!isAllowed)

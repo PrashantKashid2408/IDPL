@@ -5,23 +5,15 @@ namespace Core.Entity.Enums
 
     public class RoleEnums
     {
-        public const string SuperAdmin = "1";
-        public const string Admin = "2";
-        public const string School = "3";
-        public const string Teacher = "4";
-        public const string Parent = "5";
-        public const string Student = "6";
-        public const string HQSchoolAdmin = "7";
+        public const string Admin = "1";
+        public const string Operator = "2";
+
 
         public enum Role
         {
-            SuperAdmin = 1,
-            Admin = 2,
-            School = 3,
-            Teacher = 4,
-            Parent = 5,
-            Student = 6,
-            HQSchoolAdmin = 7,
+            Admin = 1,
+            Operator = 2,
+
         }
     }
 

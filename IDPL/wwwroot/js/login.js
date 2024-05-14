@@ -36,7 +36,7 @@ function DoLogin(username, password, queryString, isRemember, autologin) {
                 localStorage.setItem("logout", 0);
 
                 if (data.returnUrl != null && data.returnUrl != undefined) {
-                    if (data.data.roleID == 1 || data.data.roleID == 2 || data.data.roleID == 3 || data.data.roleID == 4 || data.data.roleID == 7) {
+                    if (data.data.roleId == 1 || data.data.roleId == 2) {
                         window.location.href = data.returnUrl;
                     }
                     else {

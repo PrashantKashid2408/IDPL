@@ -14,20 +14,28 @@ namespace IDPL.Controllers
 {
     public class UsersController : Controller
     {
-        private JsonMessage _jsonMessage = null;
-        private Users users = new Users();
+        
         private readonly string _module = "IDPL.Controllers.UsersController";
-        private Helper _helper;
+        
         private readonly IHttpContextAccessor _httpContextAccessor;
         private IHostingEnvironment _hostingEnvironment;
+        private IMemoryCache _cache;
         private ISession _session => _httpContextAccessor.HttpContext.Session;
+        private Users users = new Users();
+        private JsonMessage _jsonMessage = null;
+        private Helper _helper;
+        private LoginVM _loginVM = null;
 
-        public UsersController(IHostingEnvironment environment = null, IHttpContextAccessor httpContextAccessor = null)
+        public UsersController(IHostingEnvironment environment = null, IHttpContextAccessor httpContextAccessor = null, IMemoryCache cache = null)
         {
+            _hostingEnvironment = environment;
+            _httpContextAccessor = httpContextAccessor;
+            _cache = cache;
             _helper = new Helper(_httpContextAccessor);
+            _loginVM = _helper.GetSession();
         }
 
-        public IActionResult Index()
+        public IActionResult Login()
         {
             return View();
         }
@@ -64,13 +72,13 @@ namespace IDPL.Controllers
 
                             //InsertAccessMember (objUserEntity.ID, "Login", getAccessMember());
 
-                            if (users.RoleId == 1)
+                            if (objUsers.RoleId == 1)
                             {
                                 _jsonMessage.ReturnUrl = "https://localhost:7033/Admin/Index";
                             }
                             else
                             {
-                                _jsonMessage.ReturnUrl = ShikshaConstants.ShikshaDomain + ShikshaConstants.TeacherDefaultController + "/" + ShikshaConstants.TeacherDefaultView + "";
+                                _jsonMessage.ReturnUrl = "https://localhost:7033/Home/Index";
                             }
                         }
                         else

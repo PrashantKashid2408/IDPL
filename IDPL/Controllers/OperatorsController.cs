@@ -16,17 +16,13 @@ namespace IDPL.Controllers
         private static string _module = "Shiksha.Controllers.OperatorsController";
 
         private Int64 _userId = 0;
-        private Int64 _schoolId = 0;
-        private string _role = "";
-        private Int64 _companyid = 0;
-        private Int64 _locationid = 0;
+        private string _roleId = "";
         private string _cacheKey = "OperatorsController_";
         private JsonMessage _jsonMessage = null;
         private int page = 1, size = 10;
         private bool isValidUser = false;
         private IMemoryCache _cache;
         private Helper _helper;
-
         private List<Operator> _list = new List<Operator>();
         private readonly IHttpContextAccessor _httpContextAccessor;
 
@@ -36,7 +32,7 @@ namespace IDPL.Controllers
             _httpContextAccessor = httpContextAccessor;
             _helper = new Helper(_httpContextAccessor);
             _userId = httpContextAccessor.HttpContext.Session.GetString(KeyEnums.SessionKeys.UserId.ToString()) != null ? Convert.ToInt64(httpContextAccessor.HttpContext.Session.GetString(KeyEnums.SessionKeys.UserId.ToString())) : 0;
-            _role = httpContextAccessor.HttpContext.Session.GetString(KeyEnums.SessionKeys.UserRole.ToString()) != null ? Convert.ToString(httpContextAccessor.HttpContext.Session.GetString(KeyEnums.SessionKeys.UserRole.ToString())) : "";
+            _roleId = httpContextAccessor.HttpContext.Session.GetString(KeyEnums.SessionKeys.RoleId.ToString()) != null ? Convert.ToString(httpContextAccessor.HttpContext.Session.GetString(KeyEnums.SessionKeys.RoleId.ToString())) : "";
             isValidUser = _helper.IsValidUser(_userId, RoleEnums.Admin);
         }
 

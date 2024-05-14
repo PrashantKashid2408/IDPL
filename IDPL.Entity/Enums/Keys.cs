@@ -36,6 +36,7 @@
             UserCreatedById,
             UserName,
             UserRole,
+            RoleId,
             UserRoleName,
             FirstName,
             LastName,

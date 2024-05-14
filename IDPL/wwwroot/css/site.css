@@ -866,11 +866,11 @@ table thead {
 /* End Gender */
 .nav-sidebar .nav-item > .nav-link {
     background: none !important;
-    color: #c2c7d0 !important;
+    color: #fff !important;
 }
 
     .nav-sidebar .nav-item > .nav-link:hover {
-        background-color: #2B1571 !important;
+        background-color: #28a745  !important;
         color: #ffffff !important;
     }
 
