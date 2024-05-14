@@ -172,6 +172,29 @@ table thead {
     background-color: #00aeae;
 }
 
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+
+.blinking {
+    animation: blinkingAnimation 0.2s infinite alternate; /* Blinking animation with a duration of 0.5 seconds */
+}
+
+@keyframes blinkingAnimation {
+    from {
+        background-color: yellow; /* Initial color */
+    }
+
+    to {
+        background-color: red; /* Blinking color */
+    }
+}
+
+
 .unCer_sm {
     display: inline-block;
     width: 30px;
