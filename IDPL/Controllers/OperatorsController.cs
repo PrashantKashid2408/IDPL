@@ -7,6 +7,7 @@ using IDPL.Models;
 using IDPL.Resources;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using Newtonsoft.Json;
 using X.PagedList;
 
 namespace IDPL.Controllers
@@ -79,6 +80,26 @@ namespace IDPL.Controllers
             return View(objSM);
         }
 
+        public dynamic SaveOperator(IFormCollection objEntity)
+        {
+            try
+            {
+                var objBF = new OperatorBusinessFacade();
+                bool isSuccess = objBF.Save(objEntity);
+
+                if (isSuccess)
+                    _jsonMessage = new JsonMessage(true, Resource.lbl_success, Resource.lbl_msg_dataSavedSuccessfully, KeyEnums.JsonMessageType.SUCCESS, objEntity);
+                else
+                    _jsonMessage = new JsonMessage(false, Resource.lbl_error, Resource.lbl_msg_dataNotSavedSuccessfully, KeyEnums.JsonMessageType.FAILURE);
+            }
+            catch (Exception ex)
+            {
+                Log.WriteLog(_module, "SaveOperator(" + Json(objEntity) + ")", ex.Source, ex.Message);
+                _jsonMessage = new JsonMessage(false, Resource.lbl_error, Resource.lbl_msg_dataNotSavedSuccessfully, KeyEnums.JsonMessageType.FAILURE, ex.Message);
+            }
+
+            return _jsonMessage;
+        }
         public List<Operator> GetList(string query, string sortColumn, string sortOrder, ref int page, ref int size, string flag, string startDate = "", string toDate = "", Int64 _userId = 0, bool isLoad = true, string ListType = "", Int64 companyID = 0, Int64 locationId = 0)
         {
             List<Operator> _list = new List<Operator>();
