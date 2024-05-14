@@ -1,0 +1,50 @@
+﻿
+@using Core.Entity.Enums;
+@using Microsoft.AspNetCore.Http;
+@using Newtonsoft.Json;
+@inject IHttpContextAccessor HttpContextAccessor;
+@*@{
+    var _id = (HttpContextAccessor.HttpContext.Session.GetString(KeyEnums.SessionKeys.UserId.ToString()) != null ? Convert.ToString(HttpContextAccessor.HttpContext.Session.GetString(KeyEnums.SessionKeys.UserId.ToString())) : "");
+    TempData["userid"] = _id;
+    var _role = (HttpContextAccessor.HttpContext.Session.GetString(KeyEnums.SessionKeys.UserRole.ToString()) != null ? Convert.ToString(HttpContextAccessor.HttpContext.Session.GetString(KeyEnums.SessionKeys.UserRole.ToString())) : "");
+    TempData["UserRole"] = _role;
+}
+
+}*@
+
+<script>
+   
+</script>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark customTitleAddEdit">@ViewBag.Title</h1>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <section class="content">
+        <div id="divLoader" class="container-fluid box">
+
+            <!-- Main row -->
+
+            <!-- /.row (main row) -->
+
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<script type="text/javascript">
+    
+</script>

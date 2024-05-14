@@ -111,7 +111,7 @@ namespace Shiksha
                 routes.MapRoute(
                    name: "landing",
                    template: "s/{id}",
-                   defaults: new { controller = "Users", action = "Index" }
+                   defaults: new { controller = "Users", action = "Login" }
                );
             });
             
@@ -119,7 +119,7 @@ namespace Shiksha
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Users}/{action=Index}/{id?}/{id2?}/{id3?}");
+                    template: "{controller=Users}/{action=Login}/{id?}/{id2?}/{id3?}");
             });
 
 

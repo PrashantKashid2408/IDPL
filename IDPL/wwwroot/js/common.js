@@ -1,11 +1,5 @@
 
 var funcSelectSentenceChBxVal = [];
-$(document).ready(function (e) {
-    numberOnly();
-    numberAndPercentageOnly();
-    plusMinusOnly();
-    numberAndDotOnly();
-});
 var loadView = {
     dashboard: function () {
         $(".nav-sidebar .nav-link").click(function () {
