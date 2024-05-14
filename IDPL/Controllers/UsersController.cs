@@ -74,9 +74,9 @@ namespace IDPL.Controllers
 
                             if (objUsers.RoleId == 1)
                             {
-                                _jsonMessage.ReturnUrl = "https://localhost:7033/Admin/Index";
+                                _jsonMessage.ReturnUrl = "https://localhost:7033/Operators/Index";
                             }
-                            else
+                            else if (objUsers.RoleId == 2)
                             {
                                 _jsonMessage.ReturnUrl = "https://localhost:7033/Home/Index";
                             }
