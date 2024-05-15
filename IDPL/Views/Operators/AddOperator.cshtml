@@ -22,11 +22,10 @@
         else {
             $(".customTitleAddEdit").text('Add Operator');
         }
-        
-        });
     });
     var custDateTime = new Date().getTime();
     document.write("<script src=\"/js/Common.js?v=" + custDateTime + "\"><\/script>");
+    document.write("<script src=\"/js/Admin.js?v=" + custDateTime + "\"><\/script>");
 
 </script>
 
@@ -67,47 +66,55 @@
                                     <div class="col-md-12">
                                         <p class="text-info"><small>All the fields marked <span class="star">*</span> are compulsory</small></p>
                                     </div>
-                                    <input type="hidden" id="ID" name="ID" value="@Model.ID" />
+                                    <input type="hidden" id="Id" name="Id" value="@Model.ID" />
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                              <input type="hidden" id="hdnFinanceItemBox_0" name="hdnFinanceItemBox_0" value="@Model.ID" />
                                             <label>Operator Name</label> <span class="starField">*</span><br />
                                             <div class="_jsMainFinanceItemBox">
                                                 <div class="FinanceItemBox" id="divFinanceItemBox_0">
                                                     <div class="form-group">
-                                                        <input type="text" name="AcademicYearName" id="AcademicYearName" class="form-control" value="@Model.OperatorName" placeholder="Operator Name" onblur="IsAcademicYearExist('AcademicYearName','',1)" />
+                                                        <input type="text" name="OperatorName" id="OperatorName" class="form-control" value="@Model.OperatorName" placeholder="Operator Name" @*onblur="IsOperatorExist('OperatorName','',1)"*@ />
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="clearfix"></div>
                                         </div>                                      
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Start Date</label> <span class="starField">*</span><br />
-                                            <div class="input-group date startDateAcademicYear" data-provide="datepicker" id="divStartDateAcademicYear_0">
-                                                <input type="text" class="form-control card_inputs" id="StartDate" name="StartDate" onchange="" onblur="" placeholder="YYYY-MM-DD" value="@Model.UserName" autocomplete="off" />
-                                                <div class="input-group-addon input-group-addon-cust"> <span class="input-group-text input-group-text-cust"> <i class="far fa-calendar-alt"></i> </span> </div>
+                                            <input type="hidden" id="hdnFinanceItemBox_0" name="hdnFinanceItemBox_0" value="@Model.ID" />
+                                            <label>UserName</label> <span class="starField">*</span><br />
+                                            <div class="_jsMainFinanceItemBox">
+                                                <div class="FinanceItemBox" id="divFinanceItemBox_0">
+                                                    <div class="form-group">
+                                                        <input type="text" name="UserName" id="UserName" class="form-control" value="@Model.UserName" placeholder="UserName" @*onblur="IsUserNameExist('UserName','',1)"*@ />
+                                                    </div>
+                                                </div>
                                             </div>
+                                            <div class="clearfix"></div>
                                         </div>
-
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>End Date</label> <span class="starField">*</span><br />
-                                            <div class="input-group date endDateAcademicYear" data-provide="datepicker" id="divEndDateAcademicYear_0">
-                                                <input type="text" class="form-control card_inputs" id="EndDate" name="EndDate" onchange="" onblur="" placeholder="YYYY-MM-DD" value="@Model.Password" autocomplete="off" />
-                                                <div class="input-group-addon input-group-addon-cust"> <span class="input-group-text input-group-text-cust"> <i class="far fa-calendar-alt"></i> </span> </div>
+                                            <input type="hidden" id="hdnFinanceItemBox_0" name="hdnFinanceItemBox_0" value="@Model.ID" />
+                                            <label>Password</label> <span class="starField">*</span><br />
+                                            <div class="_jsMainFinanceItemBox">
+                                                <div class="FinanceItemBox" id="divFinanceItemBox_0">
+                                                    <div class="form-group">
+                                                        <input type="text" name="Password" id="Password" class="form-control" value="@Model.Password" placeholder="Password" />
+                                                    </div>
+                                                </div>
                                             </div>
+                                            <div class="clearfix"></div>
                                         </div>
-
                                     </div>
                                     
                                     <div class="clearfix"></div>
                                     <div class="col-md-12">
                                         <button class="btn btn-default" type="button" onclick="history.back()">Back</button>
-                                        <button class="btn btn-primary" type="button" id="btnClass" onclick="SubmitForm('frmAcademicYear')">Save</button>
+                                        <button class="btn btn-primary" type="button" id="btnClass" onclick="SubmitForm('frmOperator')">Save</button>
                                     </div>
 
                                     <div class="clearfix"></div>
