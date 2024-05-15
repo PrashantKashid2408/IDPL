@@ -1,12 +1,11 @@
-﻿$(document).ready(function () {
-    //alert("1");
-});
+﻿
 
-function ringAlarm() {
+function ringAlarm(id,id2) {
     // alert("2");
     // Play sound
+    //id2 = "true";
     var txt = document.getElementById('txtAlarm').value;
-    if (txt == 'ajay') {
+    if (txt == 'a' || id2 == true) {
         startAlarm();
     }
 
@@ -22,12 +21,12 @@ var audioUrl = baseUrl + '/audio/alarm.mp3';
 var audio = new Audio(audioUrl);
 
 // Relative path to the audio file
-var alarmButton = document.getElementById('alarmButton');
+
 // Function to start the alarm
 function startAlarm() {
     // Get the base URL of the current page
 
-
+    var alarmButton = document.getElementById('alarmButton');
     //var audio = new Audio('~/audio/alarm.mp3'); 
 
     audio.addEventListener('play', function () {
@@ -42,8 +41,9 @@ function startAlarm() {
 
 // Function to stop the alarm
 function stopAlarm() {
-    //var audio = new Audio('audio/alarm.mp3'); 
+    //var audio = new Audio('audio/alarm.mp3');
     // Stop audio playback
+    var alarmButton = document.getElementById('alarmButton');
     audio.pause();
     audio.currentTime = 0; // Reset audio to beginning
     showBSAlert(__WARNING, "Alarm Stopped", __WARNING);
@@ -51,9 +51,7 @@ function stopAlarm() {
 }
 
 
-$(document).ready(function () {
-    
-});
+
 // Function to update live time
 function updateTime() {
     var now = new Date();
@@ -71,3 +69,39 @@ updateTime();
 // Update time every second after the initial call
 setInterval(updateTime, 1000);
 
+function TurnOnOffLed(id) {
+
+    if (id == true) {
+        startAlarm();
+    }
+
+    var buttonName = $("#ledTurnOnOff")
+    var id = 0;
+    var button = document.getElementById("ledTurnOnOff");
+    if (button.textContent === "Turn Off Led") {
+        button.textContent = "Turn On Led";
+        id = 1;
+    } else {
+        button.textContent = "Turn Off Led";
+        id = 0;
+    }
+   
+    $.ajax({
+        url: '/Home/TurnOnOffLed',
+        data: {"id":id},
+        type: "POST",
+        cache: false,
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        success: function (result) {
+           
+            //  $("#btnUnAssign").attr("class", "btn btn-primary disabled");
+            // $("#nxtUnassigned").attr("class", "btn btn-primary disabled");
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            removeLoader("#divPri1");
+        }   
+    });
+}
+
+
+        

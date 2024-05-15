@@ -50,7 +50,14 @@
     document.write("<script src=\"/js/global.js?v=" + custDateTime + "\"><\/script>");
     document.write("<script src=\"/js/common.js?v=" + custDateTime + "\"><\/script>");
     document.write("<script src=\"/js/demo.js?v=" + custDateTime + "\"><\/script>");
-    
+
+
+    window.onload = function () {
+        checkValuesAndStartAlarm(@ViewBag.AddLevel);
+    };
+    // $(document).ready(function () {
+    //     ringAlarm("1", @ViewBag.AddLevel)
+    // });
 </script>
 @*   <script src="~/js/setLayout.js"></script> *@
 
@@ -77,7 +84,7 @@
                     <button type="button" class="btn btn-warning btn-block" id="alarmButton" onclick="stopAlarm()">Alarm</button>
                 </div>
                 <div class="col-sm-3">
-                    <button type="button" class="btn btn-success btn-block">Led1</button>
+                    <button type="button" id="ledTurnOnOff" class="btn btn-success btn-block" onclick="TurnOnOffLed(@ViewBag.AddLevel)" >Turn On Led</button>
                 </div>
                 <div class="col-sm-3">
                     <input type="text" class="form-control" id="txtAlarm" placeholder="Value 1" onchange="ringAlarm()">
