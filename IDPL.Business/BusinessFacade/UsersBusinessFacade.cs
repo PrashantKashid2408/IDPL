@@ -84,34 +84,34 @@ namespace Core.Business.BusinessFacade
             return null;
         }
 
-        public bool Save(dynamic objEntity)
+        public Int64 Save(dynamic objEntity)
         {
             try
             {
-                objdynamicWrapper.objWrapperClass = objEntity;
+                objUsersWrapper.objWrapperClass = objEntity;
                 DataAccess.DataAccessLayer.DataAccess dalObject = new DataAccess.DataAccessLayer.DataAccess();
                 Transaction TransObj = new Transaction(dalObject);
                 TransObj.ConnectionString = dbClass.SqlConnectString();
                 Dictionary<string, Command> CommandsObj = new Dictionary<string, Command>();
                 int commandCounter = 0;
 
-                bool result = objdynamicWrapper.Save(ref CommandsObj, ref commandCounter);
+                bool result = objUsersWrapper.Save(ref CommandsObj, ref commandCounter);
                 TransObj.AddCommandList(CommandsObj);
                 if (TransObj.ExecuteTransaction())
                 {
                     long ID = 0;
                     if (long.TryParse(TransObj.ReturnID, out ID) && ID > 0)
                     {
-                        objEntity.ID = ID;
+                        objEntity.Id = ID;
                     }
-                    return true;
+                    return ID;
                 }
                 else
-                    return false;
+                    return 0;
             }
             catch (Exception ex)
             {
-                return false;
+                return 0;
             }
             finally { }
         }

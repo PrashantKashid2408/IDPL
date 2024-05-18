@@ -33,15 +33,21 @@
 
 
 function SaveOperator() {
-    var formData = new FormData($('#frmOperator')[0]); // Change $('#frmOperator') to $('#frmOperator')[0] to get the native DOM element
     $("#divLoader").append(getLoader());
+    var id = $("#Id").val();
+    var userId = $("#UserId").val();
+    var operatorName = $("#OperatorName").val();
+    var userName = $("#UserName").val();
+    var password = $("#Password").val();
+
+
 
     $.ajax({
-        url: window.location.origin + '/Operators/SaveOperator',
-        data: formData,
+        url: '/Operators/SaveOperator',
+        data: { "id": id, "userId": userId, "operatorName": operatorName, "userName": userName, "password": password },
         type: "POST",
-        processData: false,
-        contentType: false,
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        dataType: "json",
         cache: false,
         success: function (data) {
             if (data.isSuccess) {
@@ -61,7 +67,7 @@ function SaveOperator() {
                             label: __ok,
                             cssClass: 'btn btn-primary',
                             action: function (dialog) {
-                                location.href = "/AcademicYear/Index";
+                                location.href = "/Operators/Index";
                             }
                         }
                     ],
