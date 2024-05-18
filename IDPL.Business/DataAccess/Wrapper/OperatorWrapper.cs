@@ -182,9 +182,10 @@ namespace Core.Business.DataAccess.Wrapper
                     Command command = new Command(OperatorStoredProcedures.OperatorSAVE, CommandType.StoredProcedure);
                     command.AddParameter(OperatorDBFields.IU_Flag, "I", DataAccessLayer.DataAccess.DataType.Char, 0, ParameterDirection.Input);
                     command.AddParameter(OperatorDBFields.ID, objWrapperClass.ID, DataAccessLayer.DataAccess.DataType.Number, 0, ParameterDirection.Input);
+                    command.AddParameter(OperatorDBFields.UserId, objWrapperClass.UserId, DataAccessLayer.DataAccess.DataType.Number, 0, ParameterDirection.Input);
                     command.AddParameter(OperatorDBFields.OperatorName, objWrapperClass.OperatorName, DataAccessLayer.DataAccess.DataType.NVarChar, 0, ParameterDirection.Input);
                     command.AddParameter(OperatorDBFields.UserName, objWrapperClass.UserName, DataAccessLayer.DataAccess.DataType.NVarChar, 0, ParameterDirection.Input);
-                    command.AddParameter(OperatorDBFields.Password, objWrapperClass.Password, DataAccessLayer.DataAccess.DataType.NVarChar, 0, ParameterDirection.Input);                 
+                    command.AddParameter(OperatorDBFields.Password, objWrapperClass.Password, DataAccessLayer.DataAccess.DataType.NVarChar, 0, ParameterDirection.Input);
                     command.Name = OperatorStoredProcedures.OperatorSAVE + commandCounter.ToString();
                     commandCounter++;
                     commandList.Add(command.Name, command);
@@ -213,10 +214,6 @@ namespace Core.Business.DataAccess.Wrapper
                 command.AddParameter(OperatorDBFields.OperatorName, objWrapperClass.OperatorName, DataAccessLayer.DataAccess.DataType.NVarChar, 0, ParameterDirection.Input);
                 command.AddParameter(OperatorDBFields.UserName, objWrapperClass.UserName, DataAccessLayer.DataAccess.DataType.NVarChar, 0, ParameterDirection.Input);
                 command.AddParameter(OperatorDBFields.Password, objWrapperClass.Password, DataAccessLayer.DataAccess.DataType.NVarChar, 0, ParameterDirection.Input);
-                command.AddParameter(OperatorDBFields.StatusId, objWrapperClass.StatusId, DataAccessLayer.DataAccess.DataType.Varchar2, 0, ParameterDirection.Input);
-                command.AddParameter(OperatorDBFields.CreatedDate, objWrapperClass.CreatedDate, DataAccessLayer.DataAccess.DataType.DateTime, 0, ParameterDirection.Input);
-                command.AddParameter(OperatorDBFields.UpdatedDate, objWrapperClass.UpdatedDate, DataAccessLayer.DataAccess.DataType.DateTime, 0, ParameterDirection.Input);
-
                 command.Name = OperatorStoredProcedures.OperatorSAVE + commandCounter.ToString();
                 commandCounter++;
                 commandList.Add(command.Name, command);

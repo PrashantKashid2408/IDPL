@@ -19,6 +19,7 @@ namespace Core.Business.DataAccess.Constants
         public static string StatusId = "StatusId";
         public static string CreatedDate = "CreatedDate";
         public static string UpdatedDate = "UpdatedDate";
+        public static string RowNumber = "RowNumber";
     }
 
     public class OperatorStoredProcedures

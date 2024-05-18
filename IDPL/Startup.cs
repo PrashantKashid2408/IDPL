@@ -34,6 +34,8 @@ namespace Shiksha
             {
                 options.Cookie.SameSite = SameSiteMode.None; // Set SameSite to None
                 options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // Mark as Secure (requires HTTPS)
+                options.IdleTimeout = TimeSpan.MaxValue; // Set session timeout to infinite
+
             });
 
             services.Configure<CookiePolicyOptions>(options =>
