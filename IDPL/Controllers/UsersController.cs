@@ -137,5 +137,37 @@ namespace IDPL.Controllers
 
             return _jsonMessage;
         }
+        public ActionResult Logout()
+        {
+            try
+            {
+                string UserName = string.Empty;
+                if (_loginVM.Id > 0 || _loginVM != null)
+                    UserName = _loginVM.UserName;
+
+                UserLogOut();
+
+                return RedirectToAction("Login", "Users");
+            }
+            catch (Exception ex)
+            {
+                Log.WriteLog(_module, "Logout()", ex.Source, ex.Message, ex);
+                return RedirectToAction("Login", "Users");
+            }
+        }
+        private void UserLogOut()
+        {
+            ClearCache();
+            _httpContextAccessor.HttpContext.Session.Clear();
+
+            if (_httpContextAccessor.HttpContext.Request.Cookies["LoginData"] != null)
+            {
+                Response.Cookies.Delete("LoginData");
+            }
+        }
+        private void ClearCache()
+        {
+            _cache.Remove("_userId" + _session.Id + "_" + "true");
+        }
     }
 }

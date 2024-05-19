@@ -80,21 +80,36 @@ namespace IDPL.Controllers
             return View(objSM);
         }
 
-        public dynamic SaveOperator(IFormCollection objEntity)
+        public dynamic SaveOperator(Int64 id,Int64 userId,string operatorName, string username, string password)
         {
             try
             {
-                var objBF = new OperatorBusinessFacade();
-                bool isSuccess = objBF.Save(objEntity);
+                Users users = new Users();
+                users.Id = userId;
+                users.UserName = username;
+                users.Password = new Encription().Encrypt(password);
+                users.RoleId = 2;
+                Int64 userID = new UsersBusinessFacade().Save(users);
+
+                Operator _operator = new Operator();
+                _operator.ID = id;
+                _operator.UserId = userID;
+                _operator.OperatorName = operatorName;
+                _operator.UserName = username;
+                _operator.Password = password;
+                bool isSuccess = new OperatorBusinessFacade().Save(_operator);
+
+            
+
 
                 if (isSuccess)
-                    _jsonMessage = new JsonMessage(true, Resource.lbl_success, Resource.lbl_msg_dataSavedSuccessfully, KeyEnums.JsonMessageType.SUCCESS, objEntity);
+                    _jsonMessage = new JsonMessage(true, Resource.lbl_success, Resource.lbl_msg_dataSavedSuccessfully, KeyEnums.JsonMessageType.SUCCESS);
                 else
                     _jsonMessage = new JsonMessage(false, Resource.lbl_error, Resource.lbl_msg_dataNotSavedSuccessfully, KeyEnums.JsonMessageType.FAILURE);
             }
             catch (Exception ex)
             {
-                Log.WriteLog(_module, "SaveOperator(" + Json(objEntity) + ")", ex.Source, ex.Message);
+                Log.WriteLog(_module, "SaveOperator()", ex.Source, ex.Message);
                 _jsonMessage = new JsonMessage(false, Resource.lbl_error, Resource.lbl_msg_dataNotSavedSuccessfully, KeyEnums.JsonMessageType.FAILURE, ex.Message);
             }
 

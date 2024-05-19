@@ -156,9 +156,7 @@ namespace Core.Business.DataAccess.Wrapper
                     command.AddParameter(UsersDBFields.UserName, objWrapperClass.UserName, DataAccessLayer.DataAccess.DataType.NVarChar, 0, ParameterDirection.Input);
                     command.AddParameter(UsersDBFields.Password, objWrapperClass.Password, DataAccessLayer.DataAccess.DataType.NVarChar, 0, ParameterDirection.Input);
                     command.AddParameter(UsersDBFields.RoleId, objWrapperClass.RoleId, DataAccessLayer.DataAccess.DataType.Varchar2, 0, ParameterDirection.Input);
-                    command.AddParameter(UsersDBFields.StatusId, objWrapperClass.StatusId, DataAccessLayer.DataAccess.DataType.Varchar2, 0, ParameterDirection.Input);
-                    command.AddParameter(UsersDBFields.CreatedDate, objWrapperClass.CreatedDate, DataAccessLayer.DataAccess.DataType.DateTime, 0, ParameterDirection.Input);
-                    command.AddParameter(UsersDBFields.UpdatedDate, objWrapperClass.UpdatedDate, DataAccessLayer.DataAccess.DataType.DateTime, 0, ParameterDirection.Input);
+                    command.AddParameter("RetID", 0, DataAccessLayer.DataAccess.DataType.Number, 0, ParameterDirection.Output);
 
                     command.Name = UsersStoredProcedures.UsersSAVE + commandCounter.ToString();
                     commandCounter++;
@@ -187,9 +185,7 @@ namespace Core.Business.DataAccess.Wrapper
                 command.AddParameter(UsersDBFields.UserName, objWrapperClass.UserName, DataAccessLayer.DataAccess.DataType.NVarChar, 0, ParameterDirection.Input);
                 command.AddParameter(UsersDBFields.Password, objWrapperClass.Password, DataAccessLayer.DataAccess.DataType.NVarChar, 0, ParameterDirection.Input);
                 command.AddParameter(UsersDBFields.RoleId, objWrapperClass.RoleId, DataAccessLayer.DataAccess.DataType.Varchar2, 0, ParameterDirection.Input);
-                command.AddParameter(UsersDBFields.StatusId, objWrapperClass.StatusId, DataAccessLayer.DataAccess.DataType.Varchar2, 0, ParameterDirection.Input);
-                command.AddParameter(UsersDBFields.CreatedDate, objWrapperClass.CreatedDate, DataAccessLayer.DataAccess.DataType.DateTime, 0, ParameterDirection.Input);
-                command.AddParameter(UsersDBFields.UpdatedDate, objWrapperClass.UpdatedDate, DataAccessLayer.DataAccess.DataType.DateTime, 0, ParameterDirection.Input);
+                command.AddParameter("RetID", 0, DataAccessLayer.DataAccess.DataType.Number, 0, ParameterDirection.Output);
 
                 command.Name = UsersStoredProcedures.UsersSAVE + commandCounter.ToString();
                 commandCounter++;

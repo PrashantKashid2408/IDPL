@@ -1049,13 +1049,13 @@ a {
 }
 
 .btn-primary {
-    background-color: #F4C11E;
-    border-color: #F4C11E;
+    background-color: #28a745;
+    border-color: #28a745;
 }
 
     .btn-primary:hover {
-        background-color: #ECC349;
-        border-color: #ECC349
+        background-color: #28a745;
+        border-color: #28a745
     }
 
     .btn-primary.focus,
