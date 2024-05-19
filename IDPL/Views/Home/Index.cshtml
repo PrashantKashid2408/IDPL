@@ -53,7 +53,7 @@
 
 
     window.onload = function () {
-        checkValuesAndStartAlarm(@ViewBag.AddLevel);
+       // ringAlarm(@ViewBag.AddLevel);
     };
     // $(document).ready(function () {
     //     ringAlarm("1", @ViewBag.AddLevel)
@@ -81,17 +81,24 @@
 
             <div class="row" style="display:flex;padding-top:10px;">
                 <div class="col-sm-3">
-                    <button type="button" class="btn btn-warning btn-block" id="alarmButton" onclick="stopAlarm()">Alarm</button>
+                    <button type="button" class="btn btn-warning btn-block" id="alarmButton" onclick="">Alarm</button>
                 </div>
                 <div class="col-sm-3">
-                    <button type="button" id="ledTurnOnOff" class="btn btn-success btn-block" onclick="TurnOnOffLed(@ViewBag.AddLevel)" >Turn On Led</button>
+                    <button type="button" id="toggleBitButton" class="btn btn-success btn-block" onclick="">Turn On Led</button>
                 </div>
                 <div class="col-sm-3">
                     <input type="text" class="form-control" id="txtAlarm" placeholder="Value 1" onchange="ringAlarm()">
                 </div>
             </div>
 
-
+            <div class="row col-sm-3" style="display:flex; margin-top: 20px; text-align:left;gap: 5px;">
+                <div class="col-sm-6" style="background-color:yellow;">
+                    <strong>Modbus Value:</strong> <span id="modbusValueDisplay">N/A</span>
+                </div>
+                <div class="col-sm-6" style="background-color:red; padding-left: 5px;gap:5px;">
+                    <strong>Alarm Threshold:</strong> <span id="alarmThresholdDisplay">N/A</span>
+                </div>
+            </div>
 
 
         </div><!-- /.container-fluid -->
