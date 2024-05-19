@@ -18,3 +18,6 @@
 /IDPL.Resources/bin/Debug
 /IDPL.Resources/obj/Debug
 /IDPL.Utility/bin/Debug/net6.0
+/IDPL.Resource/bin/Debug/net6.0/IDPL.Resources.deps.json
+/IDPL.Resource/bin/Debug/net6.0/IDPL.Resources.dll
+/IDPL.Resource/bin/Debug/net6.0/IDPL.Resources.pdb
