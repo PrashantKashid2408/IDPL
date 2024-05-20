@@ -115,7 +115,7 @@ namespace IDPL.Models
 
                     CommonData _CommonData = new CommonData();
                     _session.SetString(KeyEnums.SessionKeys.UserId.ToString(), loginVM.Id.ToString());
-                    _session.SetString(KeyEnums.SessionKeys.FirstName.ToString(), loginVM.FirstName.ToString());
+                    _session.SetString(KeyEnums.SessionKeys.UserName.ToString(), loginVM.UserName.ToString());
                     _session.SetString(KeyEnums.SessionKeys.RoleId.ToString(), loginVM.RoleId.ToString());
                     _session.SetString(KeyEnums.SessionKeys.UserSession.ToString(), JsonConvert.SerializeObject(loginVM));
                 }
