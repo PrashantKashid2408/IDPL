@@ -166,28 +166,82 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
 
+    const toggleBitButton = document.getElementById('toggleBitButton');
+
     toggleBitButton.addEventListener('click', function () {
         fetch('/Home/ToggleBit', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ address: 40001, bitIndex: 0 })
+            body: JSON.stringify({ address: 40001, bitIndex: 1 })
         })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alert('Bit toggled successfully');
+                    // Check if the bit was toggled from 0 to 1 (LED turned on)
+                    if (data.bitStateBeforeToggle === 0) {
+                        showBSAlert(__SUCCESS, 'LED turned on', __SUCCESS);
+                        toggleBitButton.classList.remove('btn-danger');
+                        toggleBitButton.classList.add('btn-success');
+                        toggleBitButton.textContent = 'Turn Off Led';
+                    } else {
+                        showBSAlert(__SUCCESS, 'LED turned off', __SUCCESS);
+                        toggleBitButton.classList.remove('btn-success');
+                        toggleBitButton.classList.add('btn-danger');
+                        toggleBitButton.textContent = 'Turn On Led';
+                    }
                 } else {
-                    alert('Failed to toggle bit');
+                    showBSAlert(__DANGER, 'Failed to toggle bit', __DANGER);
                 }
             })
             .catch(error => console.error('Error toggling bit:', error));
     });
+
+
 
 });
 
 
 
 
-        
+async function fetchModbusStatus() {
+    try {
+        const response = await fetch('/Home/UpdateStatus');
+        if (!response.ok) {
+            throw new Error(`Network response was not ok: ${response.statusText} (status: ${response.status})`);
+        }
+        const data = await response.json();
+        console.log("Fetched data:", data); // Add logging here
+
+        if (data.isConnected != undefined) {
+            updateModbusStatus(data.isConnected);
+        } else {
+            throw new Error('Invalid data format');
+        }
+    } catch (error) {
+        console.error('Error fetching Modbus status:', error);
+        updateModbusStatus(false); // Default to disconnected on error
+    }
+}
+
+function updateModbusStatus(isConnected) {
+    var statusText = document.getElementById('plcCommunicationStatus');
+    var statusIndicator = document.getElementById('modbusStatus');
+
+    if (isConnected) {
+        statusText.textContent = 'Master PLC Communication Status: Connected';
+        statusIndicator.classList.remove('disconnected');
+        statusIndicator.classList.add('connected');
+    } else {
+        statusText.textContent = 'Master PLC Communication Status: Disconnected';
+        statusIndicator.classList.remove('connected');
+        statusIndicator.classList.add('disconnected');
+    }
+}
+
+// Call the fetch function to get the initial status
+fetchModbusStatus();
+
+// Optionally, set an interval to regularly update the status
+setInterval(fetchModbusStatus, 5000); 

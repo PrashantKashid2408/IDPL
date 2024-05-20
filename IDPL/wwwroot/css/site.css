@@ -180,6 +180,35 @@ table thead {
 }
 
 
+.status-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px; /* Reduced padding for less height */
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    font-size: 14px; /* Slightly smaller font size */
+    cursor: pointer;
+    width: fit-content;
+}
+
+.status-indicator {
+    width: 12px; /* Slightly smaller circle */
+    height: 12px; /* Slightly smaller circle */
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+    .status-indicator.connected {
+        background-color: green;
+    }
+
+    .status-indicator.disconnected {
+        background-color: red;
+    }
+
+
 .blinking {
     animation: blinkingAnimation 0.2s infinite alternate; /* Blinking animation with a duration of 0.5 seconds */
 }

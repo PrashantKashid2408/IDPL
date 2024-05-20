@@ -67,14 +67,33 @@
     <div class="content-header" style="">
         <input type="hidden" id="page" name="page" value="0" />
         <div class="container-fluid">
-            <div class="row" style="display:flex;border: 1px solid #cccccc;border-radius: 5px; padding: 0 5px 5px;">
-                <div class="col-sm-4" style="text-align:left;important;">
-                    <span class="brand-link"> <img src="~/images/logo.png" alt="Logo" class="brand-image" style="opacity:1;height:120%;width:120%;"> </span>
-                </div><!-- /.col -->
-                <div class="col-sm-4" style="display: flex; align-items: flex-end; justify-content: flex-end;">
-                    <strong><span class="" style="font-size:16px;" id="liveTime"></span></strong>
+            <div class="row col-sm-12" style="display:flex; flex-direction: column; justify-content: space-between; border: 1px solid #cccccc; border-radius: 5px; padding: 5px;">
+                <div class="row col-sm-12" style="display:flex; justify-content: space-between;">
+                    <div class="col-sm-4" style="text-align:left;">
+                        <span class="brand-link">
+                            <img src="~/images/logo.png" alt="Logo" class="brand-image" style="opacity:1;height:120%;width:120%;">
+                        </span>
+                    </div>
+                    <div class="status-button col-sm-3" style="align-self: flex-end; margin-top: auto; height:35px;">
+                        <strong><span id="plcCommunicationStatus">Master PLC Communication Status</span></strong>
+                        <span class="status-indicator" id="modbusStatus"></span>
+                    </div>
+                    <div class="col-sm-2" style="display: flex; align-items: flex-end; justify-content: flex-end;">
+                        <strong><span class="" style="font-size:16px;" id="liveTime"></span></strong>
+                    </div>
+                    <div class="col-sm-1" style=" display:flex;align-self: flex-end; margin-top: auto; justify-content:flex-end;">
+                        <span id="">Setting</span>
+                    </div>
+
+                    <div class="col-sm-1" style="display: flex; align-items: flex-end; justify-content: flex-end;">
+                        <strong><span class="" style="" id="">Logout</span></strong>
+                    </div>
                 </div>
-            </div><!-- /.row -->
+                
+                
+               
+            </div>
+
             <div class="clear"></div>
 
 

@@ -71,6 +71,66 @@ namespace IDPL.Controllers
             return Json(new { value = modbusValue });
         }
 
+
+
+        [HttpGet]
+        public JsonResult UpdateStatus()
+        {
+            bool isConnected = false;
+            try
+            {
+                isConnected = CheckModbusConnection("122.169.112.64", 502);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { IsConnected = false });
+            }
+
+            return Json(new { IsConnected = isConnected });
+        }
+
+
+        private bool CheckModbusConnection(string ipAddress, int port)
+        {
+            TcpClient tcpClient = new TcpClient();
+            try
+            {
+                
+
+               
+               
+                    tcpClient.BeginConnect(ipAddress, port, null, null);
+                return true;
+                //using (TcpClient tcpClient = new TcpClient(ipAddress, port))
+                //{
+                //    ModbusFactory modbusFactory = new ModbusFactory();
+                //    IModbusMaster modbusMaster = modbusFactory.CreateMaster(tcpClient);
+                //    modbusMaster.Transport.Retries = 3; // Set number of retries
+
+                //    // Attempt to connect
+                //    modbusMaster.Transport.ReadTimeout = 1000; // Set read timeout
+                //    modbusMaster.Transport.WriteTimeout = 1000; // Set write timeout
+                //    modbusMaster.Transport.WaitToRetryMilliseconds = 1000; // Set wait time between retries
+                //    modbusMaster.ReadCoils(1, 0, 1);
+
+                //    // Connection successful
+                //    Console.WriteLine("Modbus connection is established.");
+                //    // You can proceed with your Modbus operations here
+
+                //    // Connection failed
+
+                //    // Handle the failure scenario here
+
+                //    // Add any additional checks or commands to validate the connection
+                //    return true; // Connection successful
+                //}
+            }
+            catch
+            {
+                Console.WriteLine("Failed to establish Modbus connection.");
+                return false; // Connection failed
+            }
+        }
         private async Task<int> GetModbusValueAsync()
         {
             int modbusValue = 0;
@@ -126,21 +186,25 @@ namespace IDPL.Controllers
                     ushort[] registers = await master.ReadHoldingRegistersAsync(1, (ushort)(request.Address - 40001), 1);
                     ushort currentValue = registers[0];
 
+                    // Determine the current state of the bit before toggling
+                    int bitStateBeforeToggle = (currentValue >> request.BitIndex) & 1;
+
                     // Toggle the specified bit
                     ushort mask = (ushort)(1 << request.BitIndex);
                     ushort newValue = (ushort)(currentValue ^ mask);
 
                     // Write the new value
                     await master.WriteSingleRegisterAsync(1, (ushort)(request.Address - 40001), newValue);
-                }
 
-                return Json(new { success = true });
+                    return Json(new { success = true, bitStateBeforeToggle });
+                }
             }
             catch (Exception ex)
             {
                 return Json(new { success = false, error = ex.Message });
             }
         }
+
 
 
     }
