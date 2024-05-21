@@ -67,10 +67,18 @@
         <div class="col-sm-2" style="display: flex; align-items: flex-end; justify-content: flex-end;">
             <strong><span class="" style="font-size:16px;" id="liveTime"></span></strong>
         </div>
-        <div class="col-sm-1" style="display: flex; align-items: flex-end; justify-content: flex-end;">
-            <span>Welcome-@TempData["username"].ToString()</span>
-            <span class="btn btn-primary" style="margin-right: 10px; padding:2px;">Setting</span> 
-            <a class="btn btn-primary" style="padding:2px;" asp-controller="Users" asp-action="Logout">Logout</a>
+        <div class="col-sm-3" style="display: flex; align-items: flex-end; justify-content: flex-end;">
+            <div class="row col-sm-5" style="display:flex;">
+                <span>Welcome-@TempData["username"].ToString()</span>
+            </div>
+            <div class="row col-sm-4" style="display:flex;">
+                <span class="btn btn-primary" style="margin-right: 10px; padding:2px;">Setting</span>
+            </div>
+            <div class="row col-sm-3" style="display:flex;padding-left:5px;">
+                <a class="btn btn-primary" style="padding:2px;" asp-controller="Users" asp-action="Logout">Logout</a>
+            </div>
+           
+           
         </div>
     </nav>
     <div class="text-center">

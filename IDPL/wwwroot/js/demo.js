@@ -50,7 +50,15 @@
 //    alarmButton.classList.remove('blinking');
 //}
 
+let isPageLoaded = false;
 
+window.onload = function () {
+    // Set the flag to true once the page has fully loaded
+    isPageLoaded = true;
+
+    // Optionally, you can initialize your modbus value and call the alarm check here
+    
+};
 
 // Function to update live time
 function updateTime() {
@@ -111,7 +119,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     var audio = new Audio('/audio/alarm.mp3');
     var alarmButton = document.getElementById('alarmButton');
     var manuallyStopped = false;
-    var stopDuration = 60000; // 5 minutes in milliseconds
+    var stopDuration = 300000; // 5 minutes in milliseconds
     var isautomaticStopped = false;
 
     function startAlarm() {
@@ -146,12 +154,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 var modbusValue = data.value;
 
                 document.getElementById('modbusValueDisplay').textContent = modbusValue;
-                document.getElementById('alarmThresholdDisplay').textContent = 5000;
+                document.getElementById('alarmThresholdDisplay').textContent = 5001;
 
 
-                if (!manuallyStopped && modbusValue >= 5000) {
+                if (!manuallyStopped && modbusValue >= 5001) {
                     startAlarm();
-                } else if (modbusValue < 5000) {
+                } else if (modbusValue < 5001 && isPageLoaded == false) {
                     stopAlarm();
                     isautomaticStopped = true;
                 }
